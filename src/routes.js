@@ -55,11 +55,10 @@ function blinkLED() { //function to start blinking
 routes.post('/led', function(req,res){
     var led = req.body.led;
     if(led){
-        LED = true; //turn on led
+        LED.writeSync(true);
     }else{
-        LED = false;
+        LED.writeSync(false);
     }    
     res.send('agora vamos ver se foi');
 })
-
 module.exports = routes;
