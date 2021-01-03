@@ -2,8 +2,8 @@ var express = require('express');
 var routes = express.Router();
 var mongoose = require('mongoose');
 var usuariosModel = mongoose.model('usuarios');
-var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
-var LED = new Gpio(2, 'out'); //use GPIO pin 4, and specify that it is output
+var Gpio = require('onoff').Gpio;
+var LED = new Gpio(2, 'out'); 
 
 //Rotas
 routes.get('/sensor',function(req,res){
@@ -60,7 +60,6 @@ routes.post('/led', function(req,res){
     }else{
         LED.writeSync(0);
         res.send('tentei desligar o led x2');
-    }    
-    
+    }        
 })
 module.exports = routes;
