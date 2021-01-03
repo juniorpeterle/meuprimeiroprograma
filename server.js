@@ -1,6 +1,8 @@
 var express = require('express');
 var server = express();
 var mongoose = require('mongoose');
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
 //Config
 server.use(express.json());
