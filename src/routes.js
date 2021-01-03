@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var usuariosModel = mongoose.model('usuarios');
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(2, 'out'); //use GPIO pin 4, and specify that it is output
-var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
+
 //Rotas
 routes.get('/sensor',function(req,res){
     res.send({
@@ -53,8 +53,13 @@ function blinkLED() { //function to start blinking
   }
   
 routes.post('/led', function(req,res){
-    setInterval(blinkLED, 550); //run the blinkLED function every 250ms
-    setTimeout(endBlink, 1000); //stop blinking after 5 seconds
+    var piscar = req.body.piscar;
+    if(piscar){
+        setInterval(blinkLED, 550); //run the blinkLED function every 250ms
+    }else{
+        setTimeout(endBlink, 1000); //stop blinking after 5 seconds
+    }
+    
     res.send('agora foi');
 })
 
