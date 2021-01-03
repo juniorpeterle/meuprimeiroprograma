@@ -56,7 +56,7 @@ function blinkLED() { //function to start blinking
 routes.post('/led', function(req,res){
     Blinkled();
     endBlink();
-    setTimeout(endBlink, 2000); //stop blinking after 5 seconds
+    setTimeout(endBlink, 5000); //stop blinking after 5 seconds
 
 })
 
