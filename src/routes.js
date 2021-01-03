@@ -38,7 +38,7 @@ routes.post('/cadastro',async function(req,res){
     res.json(result);
 })
 
-function blinkLED() { //function to start blinking
+const blinkLED = () => { //function to start blinking
     if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
       LED.writeSync(1); //set pin state to 1 (turn LED on)
     } else {
@@ -46,8 +46,8 @@ function blinkLED() { //function to start blinking
     }
   }
   
-  function endBlink() { //function to stop blinking
-    //clearInterval(blinkInterval); // Stop blink intervals
+  const endBlink = () => { //function to stop blinking
+    clearInterval(blinkLED); // Stop blink intervals
     LED.writeSync(0); // Turn LED off
     LED.unexport(); // Unexport GPIO to free resources
   }
