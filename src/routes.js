@@ -54,8 +54,8 @@ function blinkLED() { //function to start blinking
   
 routes.post('/led', function(req,res){
     setInterval(blinkLED, 550); //run the blinkLED function every 250ms
-    setTimeout(endBlink, 1000); //stop blinking after 5 seconds
-
+    //setTimeout(endBlink, 1000); //stop blinking after 5 seconds
+    res.send('agora foi');
 })
 
 module.exports = routes;
